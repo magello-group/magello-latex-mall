@@ -32,6 +32,35 @@ docker run --rm \
 Första argumentet säger vilken Markdown-fil du vill konvertera, denna måste finnas i volymen du mount:ar. 
 `-o`-argumentet säger vad PDF-filen som Pandoc genererar ska heta.
 
+### Metadata i Markdown-dokumentet
+
+Pandoc stödjer lite metadata som kan användas för att göra rapporten lite extra fin! Genom att skapa ett YAML-block i
+början på Markdown-rapporten du vill göra om till en PDF så kan du definiera lite olika saker. Här kommer ett exempel
+som är bra att ha på alla rapporter du skriver:
+
+```markdown
+---
+title: En titel, flytta din '#'-header hit
+subtitle: En schysst undertitel
+author:
+- Fabian Eriksson
+- Lista av Skribenter
+geometry:
+- top=40mm
+- left=40mm
+documentclass: extarticle
+fontsize: 8pt
+---
+
+## Introduktion
+
+geometry gör så att rapporten täcker A4 pappret lite bättre, schyssta default-värden!
+
+documentclass kan sättas till något annat, men med `extarticle` så kan du sätta fontsize mellan 8-24pt
+```
+
+Fler metadata options finns att läsa om här: https://pandoc.org/MANUAL.html#metadata-variables
+
 ## Förbättringar för framtiden
 
 För tillfället vet jag inte vilka kommandon man behöver för att kunna köra detta i Windows, så någon snäll 
