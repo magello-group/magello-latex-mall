@@ -32,6 +32,14 @@ docker run --rm \
 Första argumentet säger vilken Markdown-fil du vill konvertera, denna måste finnas i volymen du mount:ar. 
 `-o`-argumentet säger vad PDF-filen som Pandoc genererar ska heta.
 
+### Jag är en stinkande linux nörd
+Ok, du kan skria en enkel pipe in och ut istället, så som:
+```console
+cat input.md | docker run --rm -i docker.io/magellohub/magello-mall:latest -f markdown -w pdf > magello-mall-rapport.pdf
+```
+
+Föë att läsa in en godtycklig markdown (eller innan fil) `input.md` av formatet `-f markdown` sen exportera i formatet `w pdf` till filen `> magello-mall-rapport.pdf`
+
 ### Metadata i Markdown-dokumentet
 
 Pandoc stödjer lite metadata som kan användas för att göra rapporten lite extra fin! Genom att skapa ett YAML-block i
