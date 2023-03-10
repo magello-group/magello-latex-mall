@@ -3,8 +3,8 @@
 Är du också trött på att behöva skriva officiella Magello-dokument i Word? Längtar du efter den dagen då du kan skriva
 i Markdown och få ut en rapport med den officiella Magello-mallen?
 
-**Den dagen är äntligen här!** Nu kan du använda `magello-mall:latest` Docker image för att generera rapport till PDF
-från vilket Markdown dokument som helst!
+**Den dagen är äntligen här!** Nu kan du använda `magellohub/magello-mall:latest` Docker image för att generera rapport 
+till PDF från vilket Markdown dokument som helst!
 
 ## Hur funkar detta under huven?
 
@@ -26,7 +26,7 @@ containern som du har lokalt på datorn, detta görs via `-u`-flaggan
 docker run --rm \
    -v "$(pwd):/data" \
    -u "$(id -u):$(id -g)" \
-   magello-mall:latest min-markdown-rapport.md -o magello-mall-rapport.pdf
+   magellohub/magello-mall:latest min-markdown-rapport.md -o magello-mall-rapport.pdf
 ```
 
 Första argumentet säger vilken Markdown-fil du vill konvertera, denna måste finnas i volymen du mount:ar. 
