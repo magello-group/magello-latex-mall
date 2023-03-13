@@ -38,6 +38,13 @@ Ok, du kan skria en enkel pipe in och ut istället, så som:
 cat input.md | docker run --rm -i docker.io/magellohub/magello-mall:latest -f markdown -w pdf > magello-mall-rapport.pdf
 ```
 
+### Eller om man råkar köra Windows istället
+Då ser det ut såhär, eftersom vi inte är så noga med filrättigheter där.
+
+```console
+docker run --rm -v "%CD%:/data" magellohub/magello-mall:latest min-markdown-rapport.md -o magello-mall-rapport.pdf
+```
+
 Föë att läsa in en godtycklig markdown (eller innan fil) `input.md` av formatet `-f markdown` sen exportera i formatet `w pdf` till filen `> magello-mall-rapport.pdf`
 
 ### Metadata i Markdown-dokumentet
@@ -68,8 +75,3 @@ documentclass kan sättas till något annat, men med `extarticle` så kan du sä
 ```
 
 Fler metadata options finns att läsa om här: https://pandoc.org/MANUAL.html#metadata-variables
-
-## Förbättringar för framtiden
-
-För tillfället vet jag inte vilka kommandon man behöver för att kunna köra detta i Windows, så någon snäll 
-Windows-användare får gärna hjälpa till!
