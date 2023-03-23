@@ -28,7 +28,7 @@ jobs:
       run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
 
     - name: Build and push container image
-    - run: |
+      run: |
         docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/magello-mall:${{ steps.get_version.outputs.VERSION }} -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/magello-mall:latest
         docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/magello-mall:${{ github.sha }}
         docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/magello-mall:latest
