@@ -3,7 +3,7 @@
 Är du också trött på att behöva skriva officiella Magello-dokument i Word? Längtar du efter den dagen då du kan skriva
 i Markdown och få ut en rapport med den officiella Magello-mallen?
 
-**Den dagen är äntligen här!** Nu kan du använda `magellohub/magello-mall:latest` Docker image för att generera rapport 
+**Den dagen är äntligen här!** Nu kan du använda `magellohub.azurecr.io/magello-mall:latest` Container image för att generera rapport 
 till PDF från vilket Markdown dokument som helst!
 
 ## Hur funkar detta under huven?
@@ -26,25 +26,25 @@ containern som du har lokalt på datorn, detta görs via `-u`-flaggan
 docker run --rm \
    -v "$(pwd):/data" \
    -u "$(id -u):$(id -g)" \
-   magellohub/magello-mall:latest min-markdown-rapport.md -o magello-mall-rapport.pdf
+   magellohub.azurecr.io/magello-mall:latest min-markdown-rapport.md -o magello-mall-rapport.pdf
 ```
 
 Första argumentet säger vilken Markdown-fil du vill konvertera, denna måste finnas i volymen du mount:ar. 
 `-o`-argumentet säger vad PDF-filen som Pandoc genererar ska heta.
 
 ### Jag är en stinkande linux nörd
-Ok, du kan skria en enkel pipe in och ut istället, så som:
+Ok, du kan skriva en enkel pipe in och ut istället, så som:
 ```console
-cat input.md | docker run --rm -i docker.io/magellohub/magello-mall:latest -f markdown -w pdf > magello-mall-rapport.pdf
+cat input.md | docker run --rm -i magellohub.azurecr.io/magello-mall:latest -f markdown -w pdf > magello-mall-rapport.pdf
 ```
 
-För att läsa in en godtycklig markdown (eller innan fil) `input.md` av formatet `-f markdown` sen exportera i formatet `w pdf` till filen `> magello-mall-rapport.pdf`
+För att läsa in en godtycklig markdown (eller annan fil) `input.md` av formatet `-f markdown` sen exportera i formatet `w pdf` till filen `> magello-mall-rapport.pdf`
 
 ### Eller om man råkar köra Windows istället
 Då ser det ut såhär, eftersom vi inte är så noga med filrättigheter där.
 
 ```console
-docker run --rm -v "%CD%:/data" magellohub/magello-mall:latest min-markdown-rapport.md -o magello-mall-rapport.pdf
+docker run --rm -v "%CD%:/data" magellohub.azurecr.io/magello-mall:latest min-markdown-rapport.md -o magello-mall-rapport.pdf
 ```
 
 ### Metadata i Markdown-dokumentet
